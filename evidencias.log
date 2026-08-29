@@ -1,0 +1,62 @@
+Script started on 2026-08-28 10:22:15-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4/Conjunto-de-Mandelbrot[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4/Conjunto-de-Mandelbrot[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-28 10:22:21-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-28 21:26:28-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ ./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-28 21:26:54-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-28 21:36:53-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K[K[K[K[K[K[K[K[K[Kdate
+[?2004lFri Aug 28 21:37:00 -03 2026
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ whoami
+[?2004lletciasiqueira
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[4Pwhoami[2Pdateexit./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-28 21:37:59-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-28 21:38:23-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[6Pexit./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 3
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-28 21:39:00-03:00 [COMMAND_EXIT_CODE="0"]
