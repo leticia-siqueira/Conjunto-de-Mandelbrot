@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #include <time.h>
 
@@ -40,16 +41,35 @@ int interacoes(int MAX_interacoes, double pixelImaginario, double pixelreal){
     return contador_interacoes;
 }
 
+long ler_entrada(char *argumento, char *nome){
+    char *final_argumento;
+    errno = 0;
+
+    long numero = strtol(argumento, &final_argumento, 10);
+
+    if (errno != 0 || *final_argumento != '\0'){
+        fprintf(stderr, "%s invalido: %s\n", nome, argumento);
+        exit(1);
+    }
+
+    return numero;
+}
 
 int main(int argc, char *argv[]){
     
-    double cr, ci;
+    if (argc < 5 || argc > 5){
+        fprintf(stderr, "Quantidade de argumentos invalidos, Coloque apenas Altura Largura MAXinteracoes threads\n");
+        exit(1);
+    } 
 
-    parteReal_e_complexa(800, 600, 200, 150, &cr, &ci);
-    printf("cr = %f, ci = %f\n", cr, ci);
+    long numero_altura = ler_entrada(argv[1], "altura");
+    
+    long numero_largura = ler_entrada(argv[2], "largura");
 
-    int n = interacoes(1000, 0.0, 1.0);
-    printf("iteracoes = %d\n", n);
+    long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
+
+    long numero_threads = ler_entrada(argv[4], "threads");
+
 
     return 0;
 }

@@ -60,3 +60,16 @@ iteracoes = 3
 [?2004lexit
 
 Script done on 2026-08-28 21:39:00-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 09:44:56-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git pushcommit -m "Implementando as funcoes de calculo e testando"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.logrmdir Conjunto-de-Mandelbrot[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[2Pgit pushcommit -m "Implementando as funcoes de calculo e testando"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.logrmdir Conjunto-de-Mandelbrot[18Pcd ~/lmss4mv .gitignore ~/lmss4/ 2>/dev/null[6P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15P* ~/lmss4/[3Pake cleancd ~/lmss4/Conjunto-de-Mandelbrot[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake clean[K[6Pexit./mandelbrot[8Pmake./mandelbrot
+[?2004lcr = -2.000000, ci = -1.500000
+iteracoes = 3
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-30 09:45:19-03:00 [COMMAND_EXIT_CODE="0"]
