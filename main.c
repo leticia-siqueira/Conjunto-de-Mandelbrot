@@ -55,52 +55,9 @@ long ler_entrada(char *argumento, char *nome){
     return numero;
 }
 
-double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
-    struct timespec inicio, fim;
-
-    clock_gettime(CLOCK_MONOTONIC, &inicio);
-    #pragma omp parallel for num_threads(numero_threads)
-    for( int i = 0; i < numero_altura; i++){
-        for (int j = 0; j < numero_largura; j++){
-            double pixelreal, pixelImaginario;
-
-            parteReal_e_complexa(numero_largura, numero_altura, j, i, &pixelreal, &pixelImaginario);
-
-            int numero_interacoes = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
-
-            pixel_da_imagem[(i * numero_largura) + j] = ((255 * (double)numero_interacoes) / numero_MAXinteracoes);
-        }
-    }
-    clock_gettime(CLOCK_MONOTONIC, &fim);
-
-    double tempo_OpenMP = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1e9;
-
-    return tempo_OpenMP
-}
-
-int main(int argc, char *argv[]){
+double saida_Serial(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem){
     
-    if (argc < 5 || argc > 5){
-        fprintf(stderr, "Quantidade de argumentos invalidos, Coloque apenas Altura Largura MAXinteracoes threads\n");
-        exit(1);
-    } 
-
     struct timespec inicio, fim;
-
-    long numero_altura = ler_entrada(argv[1], "altura");
-
-    long numero_largura = ler_entrada(argv[2], "largura");
-
-    long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
-
-    long numero_threads = ler_entrada(argv[4], "threads");
-
-    int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
-
-    if (pixel_da_imagem == NULL){
-        fprintf(stderr, "Erro ao alocar memoria\n");
-        return 1;
-    }
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
     for( int i = 0; i < numero_altura; i++){
@@ -117,8 +74,7 @@ int main(int argc, char *argv[]){
     clock_gettime(CLOCK_MONOTONIC, &fim);
     
     double tempo_Serial = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1e9;
-    double tempo_OpenMP = saida_OpenMP(numero_largura, numero_largura, numero_MAXinteracoes, &pixel_da_imagem, numero_threads)
-    
+
     FILE *arquivoSerial = fopen("mandelbrot_lmss4_serial.pgm", "w");
 
     if (arquivoSerial == NULL){
@@ -143,8 +99,83 @@ int main(int argc, char *argv[]){
     
     fclose(arquivoSerial);
 
+    return tempo_Serial;
+}
+
+double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
+    
+    struct timespec inicio, fim;
+
+    clock_gettime(CLOCK_MONOTONIC, &inicio);
+    #pragma omp parallel for num_threads(numero_threads)
+    for( int i = 0; i < numero_altura; i++){
+        for (int j = 0; j < numero_largura; j++){
+            double pixelreal, pixelImaginario;
+
+            parteReal_e_complexa(numero_largura, numero_altura, j, i, &pixelreal, &pixelImaginario);
+
+            int numero_interacoes = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
+
+            pixel_da_imagem[(i * numero_largura) + j] = ((255 * (double)numero_interacoes) / numero_MAXinteracoes);
+        }
+    }
+    clock_gettime(CLOCK_MONOTONIC, &fim);
+
+    double tempo_OpenMP = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1e9;
+
+    FILE *arquivoOpenMP = fopen("mandelbrot_lmss4_openmp.pgm", "w");
+
+    if (arquivoOpenMP == NULL){
+        fprintf(stderr, "Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < numero_altura; i++){
+        for (int j = 0; j < numero_largura; j++){
+            
+            if (j == 0){
+
+                fprintf(arquivoOpenMP, "%d", pixel_da_imagem[(i * numero_largura) + j]);
+            } else{
+
+                fprintf(arquivoOpenMP, " %d", pixel_da_imagem[(i * numero_largura) + j]);
+            }
+        }
+
+        fprintf(arquivoOpenMP, "\n");
+    }
+    
+    fclose(arquivoOpenMP);
+
+    return tempo_OpenMP;
+}
+
+int main(int argc, char *argv[]){
+    
+    if (argc < 5 || argc > 5){
+        fprintf(stderr, "Quantidade de argumentos invalidos, Coloque apenas Altura Largura MAXinteracoes threads\n");
+        exit(1);
+    } 
 
 
+    long numero_altura = ler_entrada(argv[1], "altura");
+
+    long numero_largura = ler_entrada(argv[2], "largura");
+
+    long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
+
+    long numero_threads = ler_entrada(argv[4], "threads");
+
+    int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
+
+    if (pixel_da_imagem == NULL){
+        fprintf(stderr, "Erro ao alocar memoria\n");
+        exit(1);
+    }
+    
+    double tempo_Serial = saida_Serial(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem);
+    double tempo_OpenMP = saida_OpenMP(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
+    
     FILE *ArquivoTempo = fopen("times.txt", "w");
 
     if (ArquivoTempo == NULL){

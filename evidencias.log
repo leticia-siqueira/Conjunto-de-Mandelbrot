@@ -180,3 +180,99 @@ gcc main.o -o mandelbrot
 [?2004lexit
 
 Script done on 2026-08-30 17:17:31-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 19:20:50-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="18"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ date
+[?2004lSun Aug 30 19:20:53 -03 2026
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ dateexitmake clean./mandelbrot 5 5 50 1make[K clean[K
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makedateexitmake clean./mandelbrot 5 5 50 1[K2
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+[01m[Kmain.c:[m[K In function ‘[01m[Ksaida_OpenMP[m[K’:
+[01m[Kmain.c:145:17:[m[K [01;31m[Kerror: [m[K‘[01m[KarquivoSerial[m[K’ undeclared (first use in this function)
+  145 |         fprintf([01;31m[KarquivoSerial[m[K, "\n");
+      |                 [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[Kmain.c:145:17:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [makefile:5: main.o] Error 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K clean[K[K[K[K[K[K[K[K[K[K[7m./mandelbrot 6 6 30 3[27m./mandelbrot 6 6 30 3
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 6 6 30 3[27m./mandelbrot 6 6 30 3
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 4 4 50 1[27m./mandelbrot 4 4 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 10 6 40 4[27m./mandelbrot 10 6 40 4
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ ./mandelbrot 10 6 40 4[1P4 4 50 16 6 30 3
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ ./mandelbrot 6 6 30 310 6 40 4[1P4 4 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ ./mandelbrot 4 4 50 16 6 30 3
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ ./mandelbrot [7m./mandelbrot 1920 1080 1000 4[27m./mandelbrot 1920 1080 1000 4[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+/usr/bin/ld: main.o: in function `saida_OpenMP':
+main.c:(.text+0x529): undefined reference to `omp_get_num_threads'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:2: mandelbrot] Error 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot 1920 1080 1000 4[8P6 6 30 34 4 50 16 6 30 310 6 40 4[1P4 4 50 16 6 30 3make[K clean./mandelbrot 6 6 30 3make[K clean[K clean./mandelbrot 5 5 50 2make[Kdateexitmake clean./mandelbrot 5 5 50 1make[K clean./mandelbrot 4 4 50 1make[K cleanscript -a evidencias.log
+[?2004lScript started, output log file is 'evidencias.log'.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[6Pexitmake clean./mandelbrot 5 5 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7mif (i == 0) fprintf(stderr, "Threads ativas: %d\n", omp_get_num_threads());[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pif (i == 0) fprintf(stderr, "Threads ativas: %d\n", omp_get_num_threads())[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+/usr/bin/ld: main.o: in function `saida_OpenMP':
+main.c:(.text+0x529): undefined reference to `omp_get_num_threads'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:2: mandelbrot] Error 1
+[?2004h]0;letciasiqueira@LScript started on 2026-08-30 19:40:15-03:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="170" LINES="18"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[6Pexitmake clean./mandelbrot 5 5 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7mif (i == 0) fprintf(stderr, "Threads ativas: %d\n", omp_get_num_threads());[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pif (i == 0) fprintf(stderr, "Threads ativas: %d\n", omp_get_num_threads())[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+/usr/bin/ld: main.o: in function `saida_OpenMP':
+main.c:(.text+0x529): undefined reference to `omp_get_num_threads'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:2: mandelbrot] Error 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makw [K[Ke clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K clean./mandelbrot 5 5 50 1make[K clean[6Pexitmake clean./mandelbrot 5 5 50 1make[K./mandelbrot 5 5 50 1[Kmake[K clean./mandelbrot 4 4 50 1make[K cleanscript -a evidencias.log[14Pmake clean[K cleanscript -a evidencias.log[14Pmake clean[2Pgit pushcommit -m "Normalização dos valores 0 a 255"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean./mandelbrot 4 4 50 1make[K cleanscript -a evidencias.logmake[K cleanscript -a evidencias.log[14Pmake cleanscript -a evidencias.log[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake cleanunzip "testes (1).tar"[1Pfile[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4@tar -xvf[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pfile[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@unzip[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Pmake clean[Kmake cleanscript -a evidencias.log[14Pmake cleanscript -a evidencias.log
+[?2004lScript started, output log file is 'evidencias.log'.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 10 6 40 4[27m./mandelbrot 10 6 40 4
+[?2004lbash: ./mandelbrot: No such file or directory
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:Script started on 2026-08-30 19:47:33-03:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="166" LINES="18"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 10 6 40 4[27m./mandelbrot 10 6 40 4
+[?2004lbash: ./mandelbrot: No such file or directory
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot 10 6 40 4
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-30 19:49:31-03:00 [COMMAND_EXIT_CODE="0"]
