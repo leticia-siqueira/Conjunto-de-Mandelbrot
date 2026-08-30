@@ -63,13 +63,37 @@ int main(int argc, char *argv[]){
     } 
 
     long numero_altura = ler_entrada(argv[1], "altura");
-    
+
     long numero_largura = ler_entrada(argv[2], "largura");
 
     long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
 
     long numero_threads = ler_entrada(argv[4], "threads");
 
+    int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
 
+    if (pixel_da_imagem == NULL){
+        fprintf(stderr, "Erro ao alocar memoria\n");
+        return 1;
+    }
+
+    for( int i = 0; i < numero_altura; i++){
+        for (int j = 0; j < numero_largura; j++){
+            double pixelreal, pixelImaginario;
+
+            parteReal_e_complexa(numero_largura, numero_altura, j, i, &pixelreal, &pixelImaginario);
+
+            pixel_da_imagem[(i * numero_largura) + j] = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
+        }
+    }
+    
+    for (int i = 0; i < numero_altura; i++){
+        for (int j = 0; j < numero_largura; j++){
+            printf("%d ", pixel_da_imagem[(i * numero_largura) + j]);
+        }
+        printf("\n");
+    }
+
+    free(pixel_da_imagem);
     return 0;
 }
