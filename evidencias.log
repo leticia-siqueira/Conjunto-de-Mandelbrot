@@ -85,3 +85,64 @@ gcc main.o -o mandelbrot
 [?2004lexit
 
 Script done on 2026-08-30 11:19:58-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 11:23:53-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit./mandelbrot 3 3 10 1make[K
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makeexit./mandelbrot 3 3 10 1
+[?2004l1 2 2 
+10 10 3 
+1 2 2 
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exitr[K
+[?2004lexit
+
+Script done on 2026-08-30 11:24:08-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 11:42:58-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 4 4 50 1[27m./mandelbrot 4 4 50 1
+[?2004l1 2 2 2 
+1 5 50 2 
+1 5 50 2 
+1 2 2 2 
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exir[Kt
+[?2004lexit
+
+Script done on 2026-08-30 11:43:27-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 11:59:41-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makeexit./mandelbrot 4 4 50 1
+[?2004l1 2 2 2 
+1 3 6 5 
+50 50 50 50 
+1 3 6 5 
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-30 11:59:55-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 12:24:05-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit./mandelbrot 4 4 50 1
+[?2004l5 10 10 10 
+5 15 31 26 
+255 255 255 255 
+5 15 31 26 
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-30 12:24:20-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 12:27:59-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="159" LINES="14"]
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ cat "/home/letciasiqueira/lmss4/testes/teste1_serial.txt"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Pfind ~/lmss4 -iname "*teste1*"cat "/home/letciasiqueira/lmss4/testes/teste1_serial.txt"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kcat "/home/letciasiqueira/lmss4/testes/teste1_serial.txt"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Pfind ~/lmss4 -iname "*teste1*"cat "testes/teste1_serial.txt"exit[K./mandelbrot 4 4 50 1exit[K./mandelbrot 4 4 50 1make[K
+[?2004lgcc -c main.c 
+gcc main.o -o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makecat "/home/letciasiqueira/lmss4/testes/teste1_serial.txt"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Pfind ~/lmss4 -iname "*teste1*"cat "testes/teste1_serial.txt"exit[K./mandelbrot 4 4 50 1
+[?2004l5 10 10 10 
+5 15 30 25 
+255 255 255 255 
+5 15 30 25 
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-30 12:28:16-03:00 [COMMAND_EXIT_CODE="0"]

@@ -12,9 +12,9 @@ void parteReal_e_complexa(int largura, int altura, int coluna, int linha, double
     double minimoReal = -2.0, maximoReal = 1.0;
     double minimoImaginario = -1.5, maximoimaginario = 1.5;
 
-    *pixelreal = minimoReal + (coluna / (largura - 1)) * (maximoReal - minimoReal);
+    *pixelreal = minimoReal + ((double)coluna / largura) * (maximoReal - minimoReal);
 
-    *pixelImaginario = minimoImaginario + (linha / (altura - 1)) * (maximoimaginario - minimoImaginario);
+    *pixelImaginario = minimoImaginario + ((double) linha / altura) * (maximoimaginario - minimoImaginario);
 }
 
 int interacoes(int MAX_interacoes, double pixelImaginario, double pixelreal){
@@ -83,7 +83,11 @@ int main(int argc, char *argv[]){
 
             parteReal_e_complexa(numero_largura, numero_altura, j, i, &pixelreal, &pixelImaginario);
 
-            pixel_da_imagem[(i * numero_largura) + j] = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
+            int numero_interacoes = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
+
+            pixel_da_imagem[(i * numero_largura) + j] = numero_interacoes; 
+
+            pixel_da_imagem[(i * numero_largura) + j] = ((255 * (double)numero_interacoes) / numero_MAXinteracoes);
         }
     }
     
