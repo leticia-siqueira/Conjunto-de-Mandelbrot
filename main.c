@@ -91,12 +91,28 @@ int main(int argc, char *argv[]){
         }
     }
     
+    FILE *arquivoSerial = fopen("mandelbrot_lmss4_serial.pgm", "w");
+
+    if (arquivoSerial == NULL){
+        fprintf(stderr, "Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
     for (int i = 0; i < numero_altura; i++){
         for (int j = 0; j < numero_largura; j++){
-            printf("%d ", pixel_da_imagem[(i * numero_largura) + j]);
+            if (j == 0){
+
+                fprintf(arquivoSerial, "%d", pixel_da_imagem[(i * numero_largura) + j]);
+            } else{
+
+                fprintf(arquivoSerial, " %d", pixel_da_imagem[(i * numero_largura) + j]);
+            }
         }
-        printf("\n");
+        
+        fprintf(arquivoSerial, "\n");
     }
+
+    fclose(arquivoSerial);
 
     free(pixel_da_imagem);
     return 0;
