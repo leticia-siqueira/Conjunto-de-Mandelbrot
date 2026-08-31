@@ -276,3 +276,163 @@ gcc main.o -o mandelbrot -fopenmp
 [?2004lexit
 
 Script done on 2026-08-30 19:49:31-03:00 [COMMAND_EXIT_CODE="0"]
+etcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ makw [K[Ke clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K clean./mandelbrot 5 5 50 1make[K clean[6Pexitmake clean./mandelbrot 5 5 50 1make[K./mandelbrot 5 5 50 1[Kmake[K clean./mandelbrot 4 4 50 1make[K cleanscript -a evidencias.log[14Pmake clean[K cleanscript -a evidencias.log[14Pmake clean[2Pgit pushcommit -m "Normalização dos valores 0 a 255"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean./mandelbrot 4 4 50 1make[K cleanscript -a evidencias.logmake[K cleanscript -a evidencias.log[14Pmake cleanscript -a evidencias.log[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake cleanunzip "testes (1).tar"[1Pfile[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4@tar -xvf[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pfile[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@unzip[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Pmake clean[Kmake cleanscript -a evidencias.log[14Pmake cleanscript -a evidencias.log
+[?2004lScript started, output log file is 'evidencias.log'.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 10 6 40 4[27m./mandelbrot 10 6 40 4
+[?2004lbash: ./mandelbrot: No such file or directory
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot 10 6 40 4
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+Script done.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git add .
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"
+[?2004l[main ae8079e] Ajeitando a função OpenMpP e colocando a flag no makefile
+ 8 files changed, 185 insertions(+), 40 deletions(-)
+ create mode 100644 main.o
+ create mode 100755 mandelbrot
+ create mode 100644 mandelbrot_lmss4_openmp.pgm
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+[01m[Kmain.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kmain.c:163:17:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean./mandelbrot 10 6 40 4
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+Script done.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git add .
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"
+[?2004l[main ae8079e] Ajeitando a função OpenMpP e colocando a flag no makefile
+ 8 files changed, 185 insertions(+), 40 deletions(-)
+ create mode 100644 main.o
+ create mode 100755 mandelbrot
+ create mode 100644 mandelbrot_lmss4_openmp.pgm
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+[01m[Kmain.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kmain.c:163:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  163 |         fprintf([01;35m[Knumero_altura[m[K, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+In file included from [01m[Kmain.c:1[m[K:
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:169:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  169 |         fprintf([01;35m[Knumero_largura[m[K, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:175:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  175 |         fprintf([01;35m[Knumero_MAXinteracoes[m[K, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected [m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  163 |         fprintf([01;35m[Knumero_altura[m[K, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+In file included from [01m[Kmain.c:1[m[K:
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:169:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  169 |         fprintf([01;35m[Knumero_largura[m[K, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:175:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  175 |         fprintf([01;35m[Knumero_MAXinteracoes[m[K, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:181:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  181 |         fprintf([01;35m[Knumero_threads[m[K, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@L‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kmain.c:181:17:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wint-conversion-Wint-conversion]8;;[m[K]
+  181 |         fprintf([01;35m[Knumero_threads[m[K, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
+      |                 [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                 [01;35m[K|[m[K
+      |                 [01;35m[Klong int[m[K
+[01m[K/usr/include/stdio.h:357:38:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Klong int[m[K’
+  357 | extern int fprintf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+[01m[Kmain.c:[m[K In function ‘[01m[Ksaida_Serial[m[K’:
+[01m[Kmain.c:98:21:[m[K [01;31m[Kerror: [m[K‘[01m[KarquivoOpenMP[m[K’ undeclared (first use in this function)
+   98 |             fprintf([01;31m[KarquivoOpenMP[m[K, "\n");
+      |                     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[Kmain.c:98:21:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [makefile:5: main.o] Error 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K clean[K cleangit commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean[K clean./mandelbrot 5 5 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 4 4 50 1[27m./mandelbrot 4 4 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+
+Script done on 2026-08-31 00:11:46-03:00 [COMMAND_EXIT_CODE="0"]
+etcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+[01m[Kmain.c:[m[K In function ‘[01m[Ksaida_Serial[m[K’:
+[01m[Kmain.c:98:21:[m[K [01;31m[Kerror: [m[K‘[01m[KarquivoOpenMP[m[K’ undeclared (first use in this function)
+   98 |             fprintf([01;31m[KarquivoOpenMP[m[K, "\n");
+      |                     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[Kmain.c:98:21:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [makefile:5: main.o] Error 1
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make
+[?2004lgcc -c main.c -fopenmp
+gcc main.o -o mandelbrot -fopenmp
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make clean[K clean[K cleangit commit -m "Ajeitando a função OpenMpP e colocando a flag no makefile"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kscript -a evidencias.log[14Pmake clean[K clean./mandelbrot 5 5 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [7m./mandelbrot 4 4 50 1[27m./mandelbrot 4 4 50 1
+[?2004l[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ exit
+[?2004lexit
+Script done.
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ make cel[K[Klean
+[?2004lrm -f *.o mandelbrot
+[?2004h]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ git add[K[K[K[K[K[K[K[K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;32mletciasiqueira@Letcia[00m:[01;34m~/lmss4[00m$ [K]0;letciasiqueira@Letcia: ~/lmss4[01;3
