@@ -14,8 +14,8 @@ typedef struct Estrutura_pthread{
     int max_iteracoes;
     int linha_inicial;
     int linha_final;
-    int *pixel_da_imagem
-}Estrutura_pthread;
+    int *pixel_da_imagem;
+} Estrutura_pthread;
 
 void parteReal_e_complexa(int largura, int altura, int coluna, int linha, double *pixelreal, double *pixelImaginario){
 
@@ -52,13 +52,19 @@ int interacoes(int MAX_interacoes, double pixelImaginario, double pixelreal){
 }
 
 long ler_entrada(char *argumento, char *nome){
+    FILE *Erros_ler_entrada = fopen("erros.txt", "a");
+
+    if (Erros_ler_entrada == NULL){
+        exit(1);
+    }
+
     char *final_argumento;
     errno = 0;
 
     long numero = strtol(argumento, &final_argumento, 10);
 
     if (errno != 0 || *final_argumento != '\0'){
-        fprintf(stderr, "%s invalido: %s\n", nome, argumento);
+        fprintf(Erros_ler_entrada, "%s invalido(a): %s\n", nome, argumento);
         exit(1);
     }
 
@@ -68,6 +74,12 @@ long ler_entrada(char *argumento, char *nome){
 double saida_Serial(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem){
     
     struct timespec inicio, fim;
+
+    FILE *Erros_serial = fopen("erros.txt", "a");
+
+    if (Erros_serial == NULL){
+        exit(1);
+    }
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
     for( int i = 0; i < numero_altura; i++){
@@ -88,7 +100,7 @@ double saida_Serial(int numero_largura, int numero_altura, int numero_MAXinterac
     FILE *arquivoSerial = fopen("mandelbrot_lmss4_serial.pgm", "w");
 
     if (arquivoSerial == NULL){
-        fprintf(stderr, "Erro ao abrir o arquivo.\n");
+        fprintf(Erros_serial, "Erro ao abrir o arquivo Serial.\n");
         exit(1);
     }
 
@@ -118,6 +130,12 @@ double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinterac
     
     struct timespec inicio, fim;
 
+    FILE *Erros_OpenMP = fopen("erros.txt", "a");
+
+    if (Erros_OpenMP == NULL){
+        exit(1);
+    }
+
     clock_gettime(CLOCK_MONOTONIC, &inicio);
     #pragma omp parallel for num_threads(numero_threads)
     for( int i = 0; i < numero_altura; i++){
@@ -138,7 +156,7 @@ double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinterac
     FILE *arquivoOpenMP = fopen("mandelbrot_lmss4_openmp.pgm", "w");
 
     if (arquivoOpenMP == NULL){
-        fprintf(stderr, "Erro ao abrir o arquivo.\n");
+        fprintf(Erros_OpenMP, "Erro ao abrir o arquivo OpenMP.\n");
         exit(1);
     }
 
@@ -185,6 +203,12 @@ void *calcula_pixel_PThreads(void *struct_pthreads){
 double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
     struct timespec inicio, fim;
 
+    FILE *Erros_pthreads1 = fopen("erros.txt", "a");
+
+    if (Erros_pthreads1 == NULL){
+        exit(1);
+    }
+
     pthread_t threads[numero_threads];
     Estrutura_pthread dados_da_thread[numero_threads];
 
@@ -200,7 +224,7 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
     FILE *arquivoPThreads1 = fopen("mandelbrot_lmss4_openmp.pgm", "w");
 
     if (arquivoPThreads1 == NULL){
-        fprintf(stderr, "Erro ao abrir o arquivo.\n");
+        fprintf(stderr, "Erro ao abrir o arquivo Pthreads 1.\n");
         exit(1);
     }
 
@@ -228,58 +252,63 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
 
 int main(int argc, char *argv[]){
     
+    FILE *Erros_main = fopen("erros.txt", "a");
+
+    if (Erros_main == NULL){
+        exit(1);
+    }
+
     if (argc < 5 || argc > 5){
-        fprintf(stderr, "Quantidade de argumentos invalidos, Coloque: Altura Largura MAXinteracoes threads\n");
+        fprintf(Erros_main, "Quantidade de argumentos invalidos, Coloque: Altura Largura MAXinteracoes threads\n");
         exit(1);
     } 
 
-
     long numero_altura = ler_entrada(argv[1], "altura");
     if (numero_altura < 1){
-        fprintf(stderr, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
+        fprintf(Erros_main, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
         exit(1);
     }
 
     long numero_largura = ler_entrada(argv[2], "largura");
     if (numero_largura < 1){
-        fprintf(stderr, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
+        fprintf(Erros_main, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
         exit(1);
     }
 
     long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
     if (numero_MAXinteracoes < 1){
-        fprintf(stderr, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
+        fprintf(Erros_main, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
         exit(1);
     }
 
     long numero_threads = ler_entrada(argv[4], "threads");
     if (numero_threads < 1){
-        fprintf(stderr, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
+        fprintf(Erros_main, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
         exit(1);
     }
 
     
     int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
-
     if (pixel_da_imagem == NULL){
-        fprintf(stderr, "Erro ao alocar memoria\n");
+        fprintf(Erros_main, "Erro ao alocar memoria do pixel da imagem\n");
         exit(1);
     }
     
     double tempo_Serial = saida_Serial(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem);
     double tempo_OpenMP = saida_OpenMP(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
+    double tempo_Pthreads1 = saida_Pthreads1(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
     
     
     FILE *ArquivoTempo = fopen("times.txt", "w");
 
     if (ArquivoTempo == NULL){
-        fprintf(stderr, "Erro ao abrir o arquivo\n");
+        fprintf(Erros_main, "Erro ao abrir o arquivo de tempo\n");
         exit(1);
     }
 
     fprintf(ArquivoTempo, "Serial: %lfs\n", tempo_Serial);
     fprintf(ArquivoTempo, "OpenMP: %lfs\n", tempo_OpenMP);
-    fprintf(ArquivoTempo, "Pthreads1: %lfs\n", tempo_Serial);
+    fprintf(ArquivoTempo, "Pthreads1: %lfs\n", tempo_Pthreads1);
     fprintf(ArquivoTempo, "Pthreads2: %lfs", tempo_Serial);
 
     fclose(ArquivoTempo);
