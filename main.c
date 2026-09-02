@@ -15,6 +15,7 @@ typedef struct Estrutura_pthread{
     int linha_inicial;
     int linha_final;
     int *pixel_da_imagem;
+    int indice_pthreads; 
 } Estrutura_pthread;
 
 void parteReal_e_complexa(int largura, int altura, int coluna, int linha, double *pixelreal, double *pixelImaginario){
@@ -182,8 +183,8 @@ double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinterac
     return tempo_OpenMP;
 }
 
-void *calcula_pixel_PThreads(void *struct_pthreads){
-    Estrutura_pthread *dados = (Estrutura_pthread *)struct_pthreads;
+void *calcula_pixel_PThreads(void *informacoes_pthreads){
+    Estrutura_pthread *dados = (Estrutura_pthread *)informacoes_pthreads;
 
     for (int i = dados->linha_inicial; i < dados->linha_final; i++){
         for (int j = 0; j < dados->largura; j++){
@@ -200,7 +201,7 @@ void *calcula_pixel_PThreads(void *struct_pthreads){
     return NULL;
 }
 
-double saida_Pthreads1_malloc(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
+double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
     struct timespec inicio, fim;
 
     FILE *Erros_pthreads1 = fopen("erros.txt", "w");
@@ -212,8 +213,15 @@ double saida_Pthreads1_malloc(int numero_largura, int numero_altura, int numero_
     pthread_t *threads = malloc(numero_threads * sizeof(pthread_t));
     Estrutura_pthread *dados_da_thread = malloc(numero_threads * sizeof(Estrutura_pthread));
 
-    if (threads == NULL || dados_da_thread == NULL){
-        fprintf(Erros_pthreads1, "Erro ao alocar memoria para as threads.\n");
+    if (threads == NULL){
+        fprintf(Erros_pthreads1, "Erro ao alocar as threads\n");
+        free(threads);
+        fclose(Erros_pthreads1);
+        exit(1);
+    }
+
+    if (dados_da_thread == NULL){
+        fprintf(Erros_pthreads1, "Erro ao alocar dados da threads\n");
         free(threads);
         free(dados_da_thread);
         fclose(Erros_pthreads1);
@@ -262,6 +270,7 @@ double saida_Pthreads1_malloc(int numero_largura, int numero_altura, int numero_
     }
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
+    
     double tempo_Pthreads1 = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1e9;
 
     FILE *arquivoPThreads1 = fopen("mandelbrot_lmss4_pthreads1.pgm", "w");
@@ -299,6 +308,46 @@ double saida_Pthreads1_malloc(int numero_largura, int numero_altura, int numero_
     return tempo_Pthreads1;
 }
 
+void *calcula_pixel_pthreads2(void *informacoes_pthreads){
+
+    Estrutura_pthread *dados = (Estrutura_pthread *)informacoes_pthreads;
+
+    int bloco = 0;
+
+    while (1){
+
+        int posicao_no_bloco;
+
+        if (bloco % 2 == 0){
+        
+            posicao_no_bloco = dados->indice_pthreads;
+        } else {
+        
+            posicao_no_bloco = dados->numero_threads - 1 - dados->indice_pthreads;
+        }
+
+        int linha = (bloco * dados->numero_threads) + posicao_no_bloco;
+
+        if (linha == dados->altura){
+            break;
+        } 
+
+        for (int j = 0; j < dados->largura; j++){
+            double pixelreal, pixelImaginario;
+
+            parteReal_e_complexa(dados->largura, dados->altura, j, linha, &pixelreal, &pixelImaginario);
+
+            int numero_interacoes = interacoes(dados->max_iteracoes, pixelImaginario, pixelreal);
+
+            dados->pixel_da_imagem[(linha * dados->largura) + j] = ((255 * (double)numero_interacoes) / dados->max_iteracoes);
+        }
+
+        bloco++;
+    }
+
+    return NULL;
+}
+
 double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *pixel_da_imagem, int numero_threads){
 
     struct timespec inicio, fim;
@@ -313,7 +362,7 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
 
 
 
-    
+
     double tempo_Pthreads2 = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1e9;
 
     FILE *arquivoPThreads2 = fopen("mandelbrot_lmss4_pthreads2.pgm", "w");
@@ -358,25 +407,25 @@ int main(int argc, char *argv[]){
         exit(1);
     } 
 
-    long numero_altura = ler_entrada(argv[1], "altura");
+    long int numero_altura = ler_entrada(argv[1], "altura");
     if (numero_altura < 1){
         fprintf(Erros_main, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
         exit(1);
     }
 
-    long numero_largura = ler_entrada(argv[2], "largura");
+    long int numero_largura = ler_entrada(argv[2], "largura");
     if (numero_largura < 1){
         fprintf(Erros_main, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
         exit(1);
     }
 
-    long numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
+    long int numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
     if (numero_MAXinteracoes < 1){
         fprintf(Erros_main, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
         exit(1);
     }
 
-    long numero_threads = ler_entrada(argv[4], "threads");
+    long int numero_threads = ler_entrada(argv[4], "threads");
     if (numero_threads < 1){
         fprintf(Erros_main, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
         exit(1);
@@ -392,6 +441,7 @@ int main(int argc, char *argv[]){
     double tempo_Serial = saida_Serial(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem);
     double tempo_OpenMP = saida_OpenMP(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
     double tempo_Pthreads1 = saida_Pthreads1(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
+    //double tempo_Pthreads2 = saida_pthreads2(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
     
     
     FILE *ArquivoTempo = fopen("times.txt", "w");
@@ -404,7 +454,7 @@ int main(int argc, char *argv[]){
     fprintf(ArquivoTempo, "Serial: %lfs\n", tempo_Serial);
     fprintf(ArquivoTempo, "OpenMP: %lfs\n", tempo_OpenMP);
     fprintf(ArquivoTempo, "Pthreads1: %lfs\n", tempo_Pthreads1);
-    fprintf(ArquivoTempo, "Pthreads2: %lfs", tempo_Serial);
+    //fprintf(ArquivoTempo, "Pthreads2: %lfs", tempo_Pthreads2);
 
     fclose(ArquivoTempo);
     
