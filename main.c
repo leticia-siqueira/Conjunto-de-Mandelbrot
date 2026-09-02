@@ -511,6 +511,10 @@ int main(int argc, char *argv[]){
         fclose(Erros_main);  
         exit(1);
     }
+
+    if (numero_threads > numero_altura) {
+        numero_threads = numero_altura;
+    }
  
     int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
     if (pixel_da_imagem == NULL){
