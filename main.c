@@ -245,31 +245,31 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
     clock_gettime(CLOCK_MONOTONIC, &inicio);
     int linha_atual = 0;
     
-    for (int t = 0; t < numero_threads; t++){
+    for (int i = 0; i < numero_threads; i++){
 
-        dados_da_thread[t].largura = numero_largura;
+        dados_da_thread[i].largura = numero_largura;
 
-        dados_da_thread[t].altura = numero_altura;
+        dados_da_thread[i].altura = numero_altura;
 
-        dados_da_thread[t].max_iteracoes = numero_MAXinteracoes;
+        dados_da_thread[i].max_iteracoes = numero_MAXinteracoes;
 
-        dados_da_thread[t].pixel_da_imagem = pixel_da_imagem;
+        dados_da_thread[i].pixel_da_imagem = pixel_da_imagem;
 
-        dados_da_thread[t].linha_inicial = linha_atual;
+        dados_da_thread[i].linha_inicial = linha_atual;
 
-        int linhas_desta_thread = linhas_por_thread;
-        if (t == numero_threads - 1){
-            linhas_desta_thread += resto;
+        int linhas_da_thread = linhas_por_thread;
+        if (i == numero_threads - 1){
+            linhas_da_thread += resto;
         }
 
-        dados_da_thread[t].linha_final = linha_atual + linhas_desta_thread;
-        linha_atual = dados_da_thread[t].linha_final;
+        dados_da_thread[i].linha_final = linha_atual + linhas_da_thread;
+        linha_atual = dados_da_thread[i].linha_final;
 
-        int criando_threads = pthread_create(&threads[t], NULL, calcula_pixel_PThreads, &dados_da_thread[t]);
+        int criar_thread = pthread_create(&threads[i], NULL, calcula_pixel_PThreads, &dados_da_thread[i]);
 
-        if (criando_threads != 0){
-            fprintf(Erros_pthreads1, "Erro ao criar thread %d\n", t);
-            for (int k = 0; k < t; k++){
+        if (criar_thread != 0){
+            fprintf(Erros_pthreads1, "Erro ao criar thread %d\n", i);
+            for (int k = 0; k < i; k++){
                 pthread_join(threads[k], NULL);
             }
             free(threads);
@@ -280,8 +280,8 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
         }
     }
 
-    for (int t = 0; t < numero_threads; t++){
-        pthread_join(threads[t], NULL);
+    for (int i = 0; i < numero_threads; i++){
+        pthread_join(threads[i], NULL);
     }
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
@@ -385,37 +385,37 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
 
-    for (int t = 0; t < numero_threads; t++){
+    for (int i = 0; i < numero_threads; i++){
 
         int resultado;
-        if (t < resto) {
+        if (i < resto) {
             resultado = 1;
         } else {
             resultado = 0;
         }
 
-        int linhas_desta_thread = linhas_por_thread + resultado;
+        int linhas_da_thread = linhas_por_thread + resultado;
 
-        dados_da_thread[t].largura = numero_largura;
+        dados_da_thread[i].largura = numero_largura;
 
-        dados_da_thread[t].altura = numero_altura;
+        dados_da_thread[i].altura = numero_altura;
 
-        dados_da_thread[t].max_iteracoes = numero_MAXinteracoes;
+        dados_da_thread[i].max_iteracoes = numero_MAXinteracoes;
 
-        dados_da_thread[t].pixel_da_imagem = pixel_da_imagem;
+        dados_da_thread[i].pixel_da_imagem = pixel_da_imagem;
 
-        dados_da_thread[t].iteracoes_da_imagem = iteracoes_da_imagem;
+        dados_da_thread[i].iteracoes_da_imagem = iteracoes_da_imagem;
 
-        dados_da_thread[t].linha_inicial = linha_atual;
+        dados_da_thread[i].linha_inicial = linha_atual;
 
-        dados_da_thread[t].linha_final = linha_atual + linhas_desta_thread;
-        linha_atual = dados_da_thread[t].linha_final;
+        dados_da_thread[i].linha_final = linha_atual + linhas_da_thread;
+        linha_atual = dados_da_thread[i].linha_final;
 
-        int criando_threads = pthread_create(&threads[t], NULL, normaliza_bloco_pthreads2, &dados_da_thread[t]);
+        int criar_thread = pthread_create(&threads[i], NULL, normaliza_bloco_pthreads2, &dados_da_thread[i]);
 
-        if (criando_threads != 0){
-            fprintf(Erros_pthreads2, "Erro ao criar thread %d (Pthreads2)\n", t);
-            for (int k = 0; k < t; k++){
+        if (criar_thread != 0){
+            fprintf(Erros_pthreads2, "Erro ao criar thread %d (Pthreads2)\n", i);
+            for (int k = 0; k < i; k++){
                 pthread_join(threads[k], NULL);
             }
             free(threads);
@@ -427,8 +427,8 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
         }
     }
 
-    for (int t = 0; t < numero_threads; t++){
-        pthread_join(threads[t], NULL);
+    for (int i = 0; i < numero_threads; i++){
+        pthread_join(threads[i], NULL);
     }
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
