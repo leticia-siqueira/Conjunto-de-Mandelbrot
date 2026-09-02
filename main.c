@@ -66,9 +66,11 @@ long ler_entrada(char *argumento, char *nome){
 
     if (errno != 0 || *final_argumento != '\0'){
         fprintf(Erros_ler_entrada, "%s invalido(a): %s\n", nome, argumento);
+        fclose(Erros_ler_entrada);
         exit(1);
     }
 
+    fclose(Erros_ler_entrada);
     return numero;
 }
 
@@ -102,6 +104,8 @@ double saida_Serial(int numero_largura, int numero_altura, int numero_MAXinterac
 
     if (arquivoSerial == NULL){
         fprintf(Erros_serial, "Erro ao abrir o arquivo Serial.\n");
+        fclose(Erros_serial); 
+        free(pixel_da_imagem);
         exit(1);
     }
 
@@ -123,6 +127,7 @@ double saida_Serial(int numero_largura, int numero_altura, int numero_MAXinterac
     }
     
     fclose(arquivoSerial);
+    fclose(Erros_serial);
 
     return tempo_Serial;
 }
@@ -158,6 +163,8 @@ double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinterac
     
     if (arquivoOpenMP == NULL){
         fprintf(Erros_OpenMP, "Erro ao abrir o arquivo OpenMP.\n");
+        fclose(Erros_OpenMP); 
+        free(pixel_da_imagem);
         exit(1);
     }
     
@@ -179,6 +186,7 @@ double saida_OpenMP(int numero_largura, int numero_altura, int numero_MAXinterac
     }
     
     fclose(arquivoOpenMP);
+    fclose(Erros_OpenMP);  
 
     return tempo_OpenMP;
 }
@@ -216,6 +224,8 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
     if (threads == NULL){
         fprintf(Erros_pthreads1, "Erro ao alocar as threads\n");
         free(threads);
+        free(dados_da_thread);
+        free(pixel_da_imagem);
         fclose(Erros_pthreads1);
         exit(1);
     }
@@ -224,6 +234,7 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
         fprintf(Erros_pthreads1, "Erro ao alocar dados da threads\n");
         free(threads);
         free(dados_da_thread);
+        free(pixel_da_imagem);
         fclose(Erros_pthreads1);
         exit(1);
     }
@@ -258,8 +269,12 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
 
         if (criando_threads != 0){
             fprintf(Erros_pthreads1, "Erro ao criar thread %d\n", t);
+            for (int k = 0; k < t; k++){
+                pthread_join(threads[k], NULL);
+            }
             free(threads);
             free(dados_da_thread);
+            free(pixel_da_imagem);
             fclose(Erros_pthreads1);
             exit(1);
         }
@@ -279,6 +294,7 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
         fprintf(Erros_pthreads1, "Erro ao abrir o arquivo Pthreads 1.\n");
         free(threads);
         free(dados_da_thread);
+        free(pixel_da_imagem);
         fclose(Erros_pthreads1);
         exit(1);
     }
@@ -306,6 +322,20 @@ double saida_Pthreads1(int numero_largura, int numero_altura, int numero_MAXinte
     free(dados_da_thread);
 
     return tempo_Pthreads1;
+}
+
+void preenche_iteracoes(int numero_largura, int numero_altura, int numero_MAXinteracoes, int *iteracoes_da_imagem){
+    for (int i = 0; i < numero_altura; i++){
+        for (int j = 0; j < numero_largura; j++){
+            double pixelreal, pixelImaginario;
+
+            parteReal_e_complexa(numero_largura, numero_altura, j, i, &pixelreal, &pixelImaginario);
+
+            int numero_interacoes = interacoes(numero_MAXinteracoes, pixelImaginario, pixelreal);
+
+            iteracoes_da_imagem[(i * numero_largura) + j] = numero_interacoes;
+        }
+    }
 }
 
 void *normaliza_bloco_pthreads2(void *informacoes_pthreads){
@@ -341,9 +371,13 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
         fprintf(Erros_pthreads2, "Erro ao alocar as threads (Pthreads2)\n");
         free(threads);
         free(dados_da_thread);
+        free(pixel_da_imagem);
+        free(iteracoes_da_imagem);
         fclose(Erros_pthreads2);
         exit(1);
     }
+
+    preenche_iteracoes(numero_largura, numero_altura, numero_MAXinteracoes, iteracoes_da_imagem);
 
     int linhas_por_thread = numero_altura / numero_threads;
     int resto = numero_altura % numero_threads;
@@ -381,8 +415,13 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
 
         if (criando_threads != 0){
             fprintf(Erros_pthreads2, "Erro ao criar thread %d (Pthreads2)\n", t);
+            for (int k = 0; k < t; k++){
+                pthread_join(threads[k], NULL);
+            }
             free(threads);
             free(dados_da_thread);
+            free(pixel_da_imagem);
+            free(iteracoes_da_imagem);
             fclose(Erros_pthreads2);
             exit(1);
         }
@@ -401,6 +440,8 @@ double saida_pthreads2(int numero_largura, int numero_altura, int numero_MAXinte
         fprintf(Erros_pthreads2, "Erro ao abrir o arquivo Pthreads 2.\n");
         free(threads);
         free(dados_da_thread);
+        free(pixel_da_imagem);
+        free(iteracoes_da_imagem);
         fclose(Erros_pthreads2);
         exit(1);
     }
@@ -438,50 +479,65 @@ int main(int argc, char *argv[]){
 
     if (argc < 5 || argc > 5){
         fprintf(Erros_main, "Quantidade de argumentos invalidos, Coloque: Altura Largura MAXinteracoes threads\n");
+        fclose(Erros_main); 
         exit(1);
     } 
-
-    long int numero_altura = ler_entrada(argv[1], "altura");
-    if (numero_altura < 1){
-        fprintf(Erros_main, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
-        exit(1);
-    }
-
-    long int numero_largura = ler_entrada(argv[2], "largura");
+    
+    long int numero_largura = ler_entrada(argv[1], "largura");
     if (numero_largura < 1){
         fprintf(Erros_main, "Valor invalido, a Largura precisa ser maior ou pelo menos igual a 1\n");
+        fclose(Erros_main);  
         exit(1);
     }
+
+    long int numero_altura = ler_entrada(argv[2], "altura");
+    if (numero_altura < 1){
+        fprintf(Erros_main, "Valor invalido, a Altura precisa ser maior ou pelo menos igual a 1\n");
+        fclose(Erros_main);  
+        exit(1);
+    }
+
 
     long int numero_MAXinteracoes = ler_entrada(argv[3], "maximo de interacoes");
     if (numero_MAXinteracoes < 1){
         fprintf(Erros_main, "Valor invalido, O numero maximo de interacoes precisa ser maior ou igual a 1\n");
+        fclose(Erros_main);  
         exit(1);
     }
 
     long int numero_threads = ler_entrada(argv[4], "threads");
     if (numero_threads < 1){
         fprintf(Erros_main, "Valor invalido, o numero de Threads precisa ser maior ou igual a 1\n");
+        fclose(Erros_main);  
+        exit(1);
+    }
+ 
+    int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
+    if (pixel_da_imagem == NULL){
+        fprintf(Erros_main, "Erro na alocacao de memoria do pixel da imagem\n");
+        fclose(Erros_main);  
         exit(1);
     }
 
-    
-    int *pixel_da_imagem = (int* )malloc((numero_altura * numero_largura)*sizeof(int)); 
-    if (pixel_da_imagem == NULL){
-        fprintf(Erros_main, "Erro ao alocar memoria do pixel da imagem\n");
+    int *iteracoes_da_imagem = (int *)malloc((numero_altura * numero_largura) * sizeof(int));
+    if (iteracoes_da_imagem == NULL){
+        fprintf(Erros_main, "Erro na alocacao de memoria das iteracoes da imagem\n");
+        fclose(Erros_main);  
+        free(pixel_da_imagem);
         exit(1);
     }
-    
+
     double tempo_Serial = saida_Serial(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem);
     double tempo_OpenMP = saida_OpenMP(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
     double tempo_Pthreads1 = saida_Pthreads1(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, numero_threads);
     double tempo_Pthreads2 = saida_pthreads2(numero_largura, numero_altura, numero_MAXinteracoes, pixel_da_imagem, iteracoes_da_imagem, numero_threads);
-    
-    
+
     FILE *ArquivoTempo = fopen("times.txt", "w");
 
     if (ArquivoTempo == NULL){
         fprintf(Erros_main, "Erro ao abrir o arquivo de tempo\n");
+        free(pixel_da_imagem);
+        free(iteracoes_da_imagem);
         exit(1);
     }
 
@@ -491,8 +547,10 @@ int main(int argc, char *argv[]){
     fprintf(ArquivoTempo, "Pthreads2: %lfs", tempo_Pthreads2);
 
     fclose(ArquivoTempo);
-    
+
+    fclose(Erros_main);  
     free(pixel_da_imagem);
-    
+    free(iteracoes_da_imagem);
+
     return 0;
 }
